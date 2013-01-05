@@ -2,28 +2,44 @@ class Player(object):
     """a player in rawgs to riches"""
     def __init__(self, cash=0, rawg_quantity=0, rawg_demand=0, rawg_price=0, rig_quantity=0, rig_supply=0, rig_price=0):
         """create a new player"""
-        self.cash = 0
-        self.rawg_quantity = rawg_quantity
-        self.rawg_demand = rawg_demand
-        self.rawg_price = rawg_price
-        self.rig_quantity = rig_quantity
-        self.rig_supply = rig_supply
-        self.rig_price = rig_price
+        # use object.__setattr__ to bypass validations
+        object.__setattr__(self, 'cash', cash)
+        object.__setattr__(self, 'rawg_quantity', rawg_quantity)
+        object.__setattr__(self, 'rawg_demand', rawg_demand)
+        object.__setattr__(self, 'rawg_price', rawg_price)
+        object.__setattr__(self, 'rig_quantity', rig_quantity)
+        object.__setattr__(self, 'rig_supply', rig_supply)
+        object.__setattr__(self, 'rig_price', rig_price)
+
+        # validate everything
+        self.validate_cash()
+        self.validate_rawgs()
+        self.validate_rigs()
 
     def __repr__(self):
         """representation of a player"""
         return '<player: %s>' % ', '.join(['%s: %s' % (attr, repr(getattr(self, attr))) for attr in dir(self) if '__' not in attr])
 
+    def validate_cash(self):
+        if self.cash < 0:
+            raise ValueError('Player cannot have negative cash')
+
+    def validate_rawgs(self):
+        if self.rawg_demand * self.rawg_price > self.cash:
+            raise ValueError('Player does not have enough cash to buy %d rawgs at %.2f each' % (self.rawg_demand, self.rawg_price))
+
+    def validate_rigs(self):
+        if self.rig_supply > self.rig_quantity:
+            raise ValueError('Player does not have enough rigs to sell %d rigs' % self.rig_supply)
+
     def __setattr__(self, name, value):
         """validate values"""
-        if 'name' == 'cash':
-            if (value < 0):
-                raise ValueError('Player cannot have negative cash')
-        if 'rawg' in name:
-            # make sure values are valid
-            pass
-        if 'rig' in name:
-            # make sure values are valid
-            pass
         # pass the call on to the parent
         object.__setattr__(self, name, value)
+        # validate appropriate attributes                   
+        if 'name' == 'cash':
+            self.validate_cash()
+        if 'rawg' in name:
+            self.validate_rawgs()
+        if 'rig' in name:
+            self.validate_rigs()

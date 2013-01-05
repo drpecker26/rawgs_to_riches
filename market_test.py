@@ -10,11 +10,10 @@ class TestMarket(unittest.TestCase):
 
     def test_buy_rawgs(self):
         # setup
-        # todo: cash
         rawg_demands = [30, 20, 100, 10]
         rawg_prices = [11, 14, 1, 4]
         rawgs_bought = [30, 20, 40, 10]
-        players = [Player(rawg_demand=d, rawg_price=p) for (d,p) in zip(rawg_demands, rawg_prices)]
+        players = [Player(cash=1000, rawg_demand=d, rawg_price=p) for (d,p) in zip(rawg_demands, rawg_prices)]
 
         # market stuff
         market.buy_rawgs(players)

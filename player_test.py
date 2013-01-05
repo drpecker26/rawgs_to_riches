@@ -7,13 +7,16 @@ class TestPlayer(unittest.TestCase):
 
     def test_cash(self):
         p = Player(cash=2)
-        self.assertRaises(ValueError, p = Player(cash=-2))
+        with self.assertRaises(ValueError):
+            p = Player(cash=-2)
 
     def test_rawgs(self):
-        pass
+        with self.assertRaises(ValueError):
+            p = Player(cash=100, rawg_demand=25, rawg_price=5)
 
     def test_rigs(self):
-        pass
+        with self.assertRaises(ValueError):
+            p = Player(rig_quantity=50, rig_supply=100)
         
 
 if __name__ == '__main__':
