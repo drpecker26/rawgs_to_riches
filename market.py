@@ -1,6 +1,6 @@
 """a market for rawgs and rigs"""
 
-from distribution import UniformDistribution
+from util.distribution import UniformDistribution
 from operator import attrgetter
 
 # module level variables

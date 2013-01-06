@@ -1,7 +1,7 @@
 import market
 from player import Player
 import unittest
-from distribution import UniformDistribution
+from util.distribution import UniformDistribution
 
 class TestMarket(unittest.TestCase):
     def setUp(self):
