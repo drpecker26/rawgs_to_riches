@@ -6,7 +6,7 @@ A real-time, competitive business game.
 - [nose](https://nose.readthedocs.org)
 
 #Running
-Run =python rawgs_to_riches.py= to start the flask server.
+Run `python rawgs_to_riches.py` to start the flask server.
 
 #Testing
-Run =nosetests= to run all tests.
+Run `nosetests` to run all tests.
