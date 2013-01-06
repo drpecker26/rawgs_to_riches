@@ -1,7 +1,10 @@
-<!doctype html>
-<title>Rawgs to Riches</title>
-{% if username %}
-  <h1>Logged in as {{ username }}.</h1>
-{% else %}
-  <h1>Not Logged in.</h1>
-{% endif %}
+{% extends "base.html" %}
+{% block body %}
+  {% if username %}
+    <h1>Logged in as {{ username }}.</h1>
+    <a href="/logout">Log out</a>
+  {% else %}
+    <h1>Not Logged in.</h1>
+    <a href="/login">Log in</a>
+  {% endif %}
+{% endblock %}

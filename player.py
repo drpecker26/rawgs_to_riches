@@ -1,6 +1,6 @@
 class Player(object):
     """a player in rawgs to riches"""
-    def __init__(self, cash=0, rawg_quantity=0, rawg_demand=0, rawg_price=0, rig_quantity=0, rig_supply=0, rig_price=0):
+    def __init__(self, cash=0, rawg_quantity=0, rawg_demand=0, rawg_price=0, rig_quantity=0, rig_supply=0, rig_price=0, username='player'):
         """create a new player"""
         # use object.__setattr__ to bypass validations
         object.__setattr__(self, 'cash', cash)

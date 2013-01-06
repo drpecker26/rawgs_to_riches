@@ -9,13 +9,13 @@ rawg_supply_distribution = UniformDistribution(40, 200)
 rig_demand_distribution = UniformDistribution(20, 1000)
 players = {}
 
-def add_player(**kwargs):
+def add_player(username, **kwargs):
     """add a player"""
     global players
     # TODO: make this atomic
-    new_player_id = len(players)
-    players[new_player_id] = Player(**kwargs)
-    return new_player_id
+    if username in players:
+        raise KeyError('Username is already taken')
+    players[username] = Player(username=username, **kwargs)
 
 def clear_players():
     global players
