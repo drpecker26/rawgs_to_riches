@@ -13,7 +13,9 @@ def add_player(**kwargs):
     """add a player"""
     global players
     # TODO: make this atomic
-    players[len(players)] = Player(**kwargs)
+    new_player_id = len(players)
+    players[new_player_id] = Player(**kwargs)
+    return new_player_id
 
 def clear_players():
     global players
