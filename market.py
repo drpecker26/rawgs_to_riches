@@ -30,7 +30,9 @@ def buy_rawgs():
         remaining_players.remove(highest_bidder)
         rawgs_to_sell = min(rawg_supply, highest_bidder.rawg_demand)
         rawg_supply -= rawgs_to_sell
-        highest_bidder.update(cash=highest_bidder.cash - rawgs_to_sell * highest_bidder.rawg_price, rawg_quantity=highest_bidder.rawg_quantity + rawgs_to_sell) # TODO: handle validation failure
+        new_cash = highest_bidder.cash - rawgs_to_sell * highest_bidder.rawg_price
+        new_rawg_quantity = highest_bidder.rawg_quantity + rawgs_to_sell
+        highest_bidder.update(cash=new_cash, rawg_quantity=new_rawg_quantity) # TODO: handle validation failure
         
 def sell_rigs():
     """buy rigs from players"""
@@ -41,4 +43,6 @@ def sell_rigs():
         remaining_players.remove(lowest_seller)
         rigs_to_buy = min(rig_demand, lowest_seller.rig_supply)
         rig_demand -= rigs_to_buy
-        lowest_seller.update(cash=lowest_seller.cash + rigs_to_buy * lowest_seller.rig_price, rig_quantity=lowest_seller.rig_quantity - rigs_to_buy) # TODO: handle validation failure
+        new_cash = lowest_seller.cash + rigs_to_buy * lowest_seller.rig_price
+        new_rig_quantity = lowest_seller.rig_quantity - rigs_to_buy
+        lowest_seller.update(cash=new_cash, rig_quantity=new_rig_quantity) # TODO: handle validation failure
