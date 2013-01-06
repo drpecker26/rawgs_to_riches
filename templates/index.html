@@ -1,8 +1,21 @@
 {% extends "base.html" %}
 {% block body %}
-  {% if username %}
-    <h1>Logged in as {{ username }}.</h1>
+  {% if player %}
+    <h1>Logged in as {{ player.username }}.</h1>
     <a href="/logout">Log out</a>
+    <ul>
+      <li>Cash:         {{ player.cash }}</li>
+      <li>Rawgs:        {{ player.rawg_quantity }}</li>
+      <li>Rawgs to buy: </li>
+      <input value=     {{ player.rawg_demand }}>
+      <li>Rawg price:   </li>
+      <input value=     {{ player.rawg_price }}>
+      <li>Rigs:         {{ player.rig_quantity }}</li>
+      <li>Rigs to sell: </li>
+      <input value=     {{ player.rig_supply }}>
+      <li>Rig price:    </li>
+      <input value=     {{ player.rig_price }}>
+    </ul>
   {% else %}
     <h1>Not Logged in.</h1>
     <a href="/login">Log in</a>

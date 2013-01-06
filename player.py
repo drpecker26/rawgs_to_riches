@@ -10,15 +10,20 @@ class Player(object):
         object.__setattr__(self, 'rig_quantity', rig_quantity)
         object.__setattr__(self, 'rig_supply', rig_supply)
         object.__setattr__(self, 'rig_price', rig_price)
+        object.__setattr__(self, 'username', username)
 
         # validate everything
         self.validate_cash()
         self.validate_rawgs()
         self.validate_rigs()
 
+    def stats(self):
+        """return this players stats as a dictionary"""
+        return {attr: getattr(self, attr) for attr in ['cash', 'rawg_quantity', 'rawg_demand', 'rawg_price', 'rig_quantity', 'rig_supply', 'rig_price']}
+
     def __repr__(self):
         """representation of a player"""
-        return '<player: %s>' % ', '.join(['%s: %s' % (attr, repr(getattr(self, attr))) for attr in dir(self) if '__' not in attr])
+        return '<Player %s: %s>' % (self.username, repr(self.stats()))
 
     def validate_cash(self):
         if self.cash < 0:

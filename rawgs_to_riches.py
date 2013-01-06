@@ -4,7 +4,10 @@ app = Flask(__name__)
 
 @app.route('/')
 def index():
-    return render_template('index.html', username=session['username'] if 'username' in session else None)
+    player = None
+    if 'username' in session and session['username'] in market.players: # TODO: this should be two separate cases
+        player = market.players[session['username']]
+    return render_template('index.html', player=player)
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():
