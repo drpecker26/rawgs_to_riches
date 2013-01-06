@@ -6,16 +6,19 @@
     <ul>
       <li>Cash:         {{ player.cash }}</li>
       <li>Rawgs:        {{ player.rawg_quantity }}</li>
-      <li>Rawgs to buy: </li>
-      <input value=     {{ player.rawg_demand }}>
-      <li>Rawg price:   </li>
-      <input value=     {{ player.rawg_price }}>
       <li>Rigs:         {{ player.rig_quantity }}</li>
-      <li>Rigs to sell: </li>
-      <input value=     {{ player.rig_supply }}>
-      <li>Rig price:    </li>
-      <input value=     {{ player.rig_price }}>
-    </ul>
+      <form action="/update" method="post">
+       <label>Rawgs to buy: </label>
+       <input value=     {{ player.rawg_demand }} name="rawg_demand">
+       <label>Rawg price:   </label>
+       <input value=     {{ player.rawg_price }}  name="rawg_price">
+       <label>Rigs to sell: </label>
+       <input value=     {{ player.rig_supply }}  name="rig_supply">
+       <label>Rig price:    </label>
+       <input value=     {{ player.rig_price }}   name="rig_price">
+       <input type="submit" value="Update">
+      </form>
+   </ul>
   {% else %}
     <h1>Not Logged in.</h1>
     <a href="/login">Log in</a>

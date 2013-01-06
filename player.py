@@ -13,9 +13,19 @@ class Player(object):
         object.__setattr__(self, 'username', username)
 
         # validate everything
+        self.validate()
+
+    def validate(self):
+        """perform all validations"""
         self.validate_cash()
         self.validate_rawgs()
         self.validate_rigs()
+
+    def update(self, **kwargs):
+        """update and validate"""
+        for attr, value in kwargs.items():
+            object.__setattr__(self, attr, value)
+        self.validate()
 
     def stats(self):
         """return this players stats as a dictionary"""
