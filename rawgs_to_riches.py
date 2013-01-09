@@ -2,6 +2,8 @@ import market
 from flask import Flask, session, render_template, request, redirect, url_for, flash
 app = Flask(__name__)
 
+# Sam's first comment
+
 @app.route('/')
 def index():
     """the homepage"""
