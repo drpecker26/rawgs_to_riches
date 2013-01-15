@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+{% block body %}
+{% if market %}
+    <h1>Troubleshooting Page</h1>
+    <a href="/logout">Log out</a>
+
+<!-- include a reset button here to set up a few players and -->
+<!-- initialize it. (Use a function to reset)     -->
+
+<!-- Show all players that have ever logged in (while server has been up-->
+
+
+<!-- So I think that the server is forgetting all market -->
+<!-- players. Build in Database now, then. -->
+
+<li> Player 1:   {{ market.players[0] }} </li>
+<li> Player 2:   {{ market.players[1] }} </li>
+<li> Player 3:   {{ market.players[2] }} </li>
+<li> Player 4:   {{ market.players[3] }} </li>
+<li> Player 5:   {{ market.players[4] }} </li>
+<li> Player 6:   {{ market.players[5] }} </li>
+
+
+
+<!--{% for player in market.players %}-->
+<!--    <li><h2>{{ player.username }}</h2>-->
+<!--  {% else %}-->
+<!--    <li><em>No players here so far</em>-->
+<!--  {% endfor %}-->
+
+<!-- iterate --> 
+ 
+    <ul>
+
+      <!-- Input all player info, here. -->
+
+   </ul>
+  {% else %}
+    <h1> Troubleshooting Page Error</h1>
+    <a href="/login">Log in</a>
+  {% endif %}
+{% endblock %}

@@ -3,6 +3,8 @@
   {% if player %}
     <h1>Logged in as {{ player.username }}.</h1>
     <a href="/logout">Log out</a>
+    <li></li>
+    <a href="/troubleshoot">Troubleshooting Page</a>
     <ul>
       <li>Cash:         {{ player.cash }}</li>
       <li>Rawgs:        {{ player.rawg_quantity }}</li>
@@ -18,9 +20,15 @@
        <input value=     {{ player.rig_price }}   name="rig_price">
        <input type="submit" value="Update">
       </form>
+
+      <!-- Include Highcharts here --> 
+
+      <div id="container" style="width: 100%; height: 400px"></div>
+      
+      
    </ul>
   {% else %}
-    <h1>Not Logged in.</h1>
+    <h1>Not Logged in, Herp!</h1>
     <a href="/login">Log in</a>
   {% endif %}
 {% endblock %}

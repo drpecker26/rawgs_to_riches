@@ -57,6 +57,13 @@ def logout():
     session.pop('username', None)
     return redirect(url_for('index'))
 
+# Build in a troubleshooting page.
+@app.route('/troubleshoot')
+def troubleshoot():
+    wholemarket = market
+    return render_template('troubleshoot.html',market = wholemarket)
+
+
 if __name__ == '__main__':
     import os
     app.secret_key = os.urandom(24)
